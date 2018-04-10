@@ -16,6 +16,7 @@ class GameViewController: UIViewController {
     var displayLink: CADisplayLink?
     var gameStartAt: Date = Date()
 
+    // MARK: GameViewController 初始化
     override func viewDidLoad() {
         super.viewDidLoad()
         ApplicationEvent.shared.registerHandlers()
@@ -46,11 +47,17 @@ class GameViewController: UIViewController {
         print("screen updated: \(displayLink)")
     }
     
+    // MARK: 定时器回调函数
     @objc func updateWith(timer: Timer)  {
 //        print("Timer went off!")
-        let now: Date = Date()
-        let interval = now.timeIntervalSince(self.gameStartAt)
+//        let now: Date = Date()
+//        let interval = now.timeIntervalSince(self.gameStartAt)
 //        print("游戏运行时间, \(interval) 秒.")
+    }
+    
+    // MARK: 声明一个方法, 第二个参数为一个闭包
+    func move(to position: CGPoint, completion: (() -> Void)?) {
+        completion?()
     }
 
     
